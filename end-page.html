@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفحة النهاية</title>
+<link rel="stylesheet" href="style4.css">
+<style>
+    body {
+        background-color: #f5e0c7; /* لون بني فاتح أنيق */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        text-align: center;
+    }
+
+    .thank-you {
+        font-size: 50px;
+        font-weight: 900;
+        margin-bottom: 50px;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    /* تكبير اسم الطالب بشكل بارز */
+    .footer-credit {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        font-size: 40px; /* حجم أكبر */
+        color: #333;
+        font-weight: bold;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .end-btn {
+        padding: 15px 45px;
+        background-color: #b38b6d; /* بني متوسط */
+        border: none;
+        color: white;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    }
+
+    .end-btn:hover {
+        background-color: #d4af7f; /* بني ذهبي فاتح */
+        box-shadow: 0 0 15px 3px rgba(212,175,127,0.6);
+        transform: scale(1.05);
+    }
+</style>
+</head>
+<body>
+
+<div class="thank-you" id="thankYou">شكراً لمشاهدتكم</div>
+
+<!-- زر العودة للصفحة الرئيسية -->
+<button class="end-btn" onclick="location.href='page1.html'">العودة للصفحة الرئيسية</button>
+
+<!-- نص الإعداد أسفل الصفحة على اليسار -->
+<div class="footer-credit" id="footerCredit">إعداد الطالب قصي اللباد</div>
+
+<script>
+    // حركة كلمة "شكراً لمشاهدتكم" مثل باقي الصفحات
+    document.addEventListener("DOMContentLoaded", () => {
+        const thankYou = document.getElementById("thankYou");
+        let opacity = 0;
+        let pos = 50;
+
+        let anim = setInterval(() => {
+            opacity += 0.03;
+            pos -= 1;
+            thankYou.style.opacity = opacity;
+            thankYou.style.transform = `translateY(${pos}px) scale(${1 + opacity * 0.05})`;
+            if (opacity >= 1) clearInterval(anim);
+        }, 20);
+
+        // حركة اسم الطالب أسفل الصفحة
+        const footer = document.getElementById("footerCredit");
+        let footerOpacity = 0;
+        let footerPos = 30;
+
+        let footerAnim = setInterval(() => {
+            footerOpacity += 0.04;
+            footerPos -= 1;
+            footer.style.opacity = footerOpacity;
+            footer.style.transform = `translateY(${footerPos}px)`;
+            if (footerOpacity >= 1) clearInterval(footerAnim);
+        }, 20);
+    });
+</script>
+
+</body>
+</html>

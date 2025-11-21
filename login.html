@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل الدخول</title>
+<link rel="stylesheet" href="style4.css">
+<style>
+    body {
+        background-color: #f5e0c7; /* نفس لون باقي الصفحات */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        font-family: "Poppins", sans-serif;
+    }
+
+    .login-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+        text-align: center;
+        width: 300px;
+    }
+
+    .login-container h2 {
+        margin-bottom: 30px;
+        font-weight: 900;
+        color: #333;
+    }
+
+    .login-container input {
+        width: 100%;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .login-container button {
+        padding: 12px 25px;
+        margin-bottom: 15px;
+        background-color: #b38b6d; /* بني متوسط */
+        border: none;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        width: 100%;
+    }
+
+    .login-container button:hover {
+        background-color: #d4af7f; /* بني ذهبي فاتح */
+        box-shadow: 0 0 15px 3px rgba(212,175,127,0.6);
+        transform: scale(1.05);
+    }
+
+    .whatsapp-btn {
+        background-color: #25D366;
+        margin-top: 10px;
+    }
+
+    .whatsapp-btn:hover {
+        background-color: #1ebe5d;
+    }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>تسجيل الدخول</h2>
+    <input type="text" placeholder="اسم المستخدم">
+    <input type="password" placeholder="كلمة المرور">
+    <button onclick="login()">دخول</button>
+    <button class="whatsapp-btn" onclick="contactWhatsApp()">تواصل عبر واتساب</button>
+</div>
+
+<script>
+    // مثال تسجيل دخول وهمي
+    function login() {
+        alert("تم تسجيل الدخول بنجاح!");
+        location.href = 'page1.html'; // بعد تسجيل الدخول انتقل للصفحة الرئيسية
+    }
+
+    // زر التواصل عبر واتساب
+    function contactWhatsApp() {
+        const message = " تواصل معنا.";
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(url, "_blank");
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>الصفحة الرئيسية</title>
+<style>
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* الخلفية */
+body {
+    background: url("m1.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* محتوى الصفحة */
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* كلمة JORDAN */
+.hero-title {
+    font-size: 80px;
+    font-weight: 900;
+    letter-spacing: 15px;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* زر ابدأ هنا */
+.start-btn {
+    margin-top: 50px;
+    padding: 15px 45px;
+    background-color: #b38b6d;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* عند المرور على الزر أو الضغط عليه */
+.start-btn:hover,
+.start-btn.active {
+    background-color: #d4af7f;
+    color: #fff;
+    box-shadow: 0 0 15px 3px rgba(212,175,127,0.6);
+    transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <h1 class="hero-title" id="title">JORDAN</h1>
+    <button class="start-btn" id="startBtn">ابدأ هنا</button>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const title = document.getElementById("title");
+    const startBtn = document.getElementById("startBtn");
+
+    // حركة كلمة JORDAN
+    let opacity = 0;
+    let pos = 50;
+    let titleAnim = setInterval(() => {
+        opacity += 0.03;
+        pos -= 1;
+        title.style.opacity = opacity;
+        title.style.transform = `translateY(${pos}px) scale(${1 + opacity * 0.05})`;
+        if (opacity >= 1) clearInterval(titleAnim);
+    }, 20);
+
+    // حركة زر ابدأ هنا
+    let btnOpacity = 0;
+    let btnPos = 30;
+    setTimeout(() => {
+        let btnAnim = setInterval(() => {
+            btnOpacity += 0.04;
+            btnPos -= 1;
+            startBtn.style.opacity = btnOpacity;
+            startBtn.style.transform = `translateY(${btnPos}px)`;
+            if (btnOpacity >= 1) clearInterval(btnAnim);
+        }, 18);
+    }, 1200);
+
+    // عند الضغط على الزر → الانتقال إلى page1.html
+    startBtn.addEventListener("click", () => {
+        startBtn.classList.add("active");
+        setTimeout(() => {
+            window.location.href = "page1.html";
+        }, 300);
+    });
+});
+</script>
+</body>
+</html>
